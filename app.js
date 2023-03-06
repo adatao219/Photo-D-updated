@@ -14,13 +14,13 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const dbUrl = '';
+const dbUrl = process.env.url;
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/photos');
 const reviewRoutes = require('./routes/reviews');
 
-mongoose.connect('mongodb+srv://adatao219:Ty19960509@cluster0.kxyplfz.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -43,7 +43,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
