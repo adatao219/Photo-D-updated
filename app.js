@@ -14,7 +14,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const dbUrl = process.env.url;
+const dbUrl = process.env.URL;
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/photos');
